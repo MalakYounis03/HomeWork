@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "206672642530",
+    "project_id": "malakflutter",
+    "storage_bucket": "malakflutter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:206672642530:android:eb26648e57ed837cdeb9bb",
+        "android_client_info": {
+          "package_name": "com.example.malak1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "206672642530-k1uk4sptiqohlmppst21dvv70uqf7deg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.malak1",
+            "certificate_hash": "a1e20999e599822c4d737575ceb92ad414d8744f"
+          }
+        },
+        {
+          "client_id": "206672642530-sh7oelu0q2e2ektlj4sld14lavrfuev9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDX8htxohQXJ9n4kwpT9J8xFyGhltF2spc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "206672642530-sh7oelu0q2e2ektlj4sld14lavrfuev9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
