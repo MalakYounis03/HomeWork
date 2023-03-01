@@ -49,6 +49,7 @@ dependencies:
   firebase_storage: ^10.3.9
   cloud_firestore: ^3.4.9
   firebase_messaging: ^13.0.3
+  flutter_staggered_animations: ^1.1.1
 
 dev_dependencies:
  flutter_launcher_icons: "^0.10.0"
