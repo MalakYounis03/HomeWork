@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:malak1/Login.dart';
 import 'package:malak1/Register.dart';
 import 'Home.dart';
 //لو شفت الكود وتعديلاته على ال github
@@ -10,6 +11,7 @@ void main() {
     home: Home(),
     routes: {
       'registor': (context) => Register(),
+      'login': (context) => Login(),
     },
   ));
 }

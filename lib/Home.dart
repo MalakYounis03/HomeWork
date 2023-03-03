@@ -9,7 +9,10 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  bool isPassword = true;
+  bool isPasswordInvisible1 = true;
+  bool isPasswordInvisible2 = true;
+  String? _password, _confirmPassword;
+
   final pass = TextEditingController();
   final formKey = GlobalKey<FormState>();
   @override
@@ -51,7 +54,13 @@ class _HomeState extends State<Home> {
                       padding: EdgeInsets.symmetric(horizontal: 20),
                       child: Column(
                         children: [
-                          TextField(
+                          TextFormField(
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return "please enter your name";
+                              }
+                              return null;
+                            },
                             decoration: InputDecoration(
                               labelText: 'Full Name',
                               prefixIcon: Icon(Icons.account_circle),
@@ -63,7 +72,13 @@ class _HomeState extends State<Home> {
                           SizedBox(
                             height: 10,
                           ),
-                          TextField(
+                          TextFormField(
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return "please enter your phone";
+                              }
+                              return null;
+                            },
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
                               labelText: 'Phone',
@@ -95,18 +110,23 @@ class _HomeState extends State<Home> {
                               if (value!.isEmpty) {
                                 return "please enter your pass";
                               }
+                              if (value.length < 8) {
+                                return 'Password must be at least 8 characters long.';
+                              }
+                              _password = value;
                               return null;
                             },
                             controller: pass,
-                            obscureText: isPassword,
+                            obscureText: isPasswordInvisible1,
                             decoration: InputDecoration(
                               suffixIcon: IconButton(
                                   onPressed: () {
                                     setState(() {
-                                      isPassword = !isPassword;
+                                      isPasswordInvisible1 =
+                                          !isPasswordInvisible1;
                                     });
                                   },
-                                  icon: Icon(isPassword
+                                  icon: Icon(isPasswordInvisible1
                                       ? Icons.visibility_off
                                       : Icons.visibility)),
                               labelText: 'Password',
@@ -119,15 +139,35 @@ class _HomeState extends State<Home> {
                           SizedBox(
                             height: 10,
                           ),
-                          TextField(
-                            obscureText: true,
+                          TextFormField(
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return "please enter your pass";
+                              }
+                              if (value != _password) {
+                                return 'Passwords do not match.';
+                              }
+                              _confirmPassword = value;
+
+                              return null;
+                            },
+                            obscureText: isPasswordInvisible2,
                             decoration: InputDecoration(
-                              suffix: Icon(Icons.remove_red_eye),
                               labelText: 'Confirm Password',
                               prefixIcon: Icon(Icons.lock),
                               filled: true,
                               fillColor: Colors.grey[200],
                               border: InputBorder.none,
+                              suffixIcon: IconButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      isPasswordInvisible2 =
+                                          !isPasswordInvisible2;
+                                    });
+                                  },
+                                  icon: Icon(isPasswordInvisible2
+                                      ? Icons.visibility_off
+                                      : Icons.visibility)),
                             ),
                           ),
                           SizedBox(
@@ -139,11 +179,11 @@ class _HomeState extends State<Home> {
                               child: ElevatedButton(
                                   onPressed: () {
                                     if (formKey.currentState!.validate()) {
-                                      print(pass.text);
+                                      Navigator.pushNamed(context, 'registor');
                                     }
                                   },
                                   child: Text(
-                                    "Login",
+                                    "registor",
                                   ),
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor:
@@ -157,10 +197,10 @@ class _HomeState extends State<Home> {
                               height: 40,
                               child: ElevatedButton(
                                   onPressed: () {
-                                    Navigator.pushNamed(context, 'registor');
+                                    Navigator.pushNamed(context, 'login');
                                   },
                                   child: Text(
-                                    "Register",
+                                    "Login",
                                     style: TextStyle(
                                       color: Color.fromARGB(255, 17, 75, 122),
                                     ),
